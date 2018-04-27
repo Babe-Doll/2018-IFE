@@ -1,0 +1,87 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2018-04-27 11:22:18
+ * @version $Id$
+ */
+ *{
+    margin: 0;
+    padding:0
+}
+.wrap{
+    perspective:1000px;
+}
+.wrap ul{
+    width: 200px;
+    height: 200px;
+    margin: 100px auto;
+    position: relative;
+    transform-style: preserve-3d;
+    transform-origin: 100px 100px -100px;
+}
+/*infinite无限循环*/
+.wrap ul:hover{
+	animation: move 5s infinite reverse linear;
+}
+
+.wrap ul li{
+    left: 0;
+    top: 0;
+    /*因为线宽4px哦*/
+    width: 196px;
+    height: 196px;
+    color: #fff;
+    font-size: 60px;
+    list-style: none;
+    text-align: center;
+    line-height: 196px;
+    position: absolute;
+    border:2px solid #8616EC;
+    background: rgba(255, 204, 255,0.5) ;
+
+}
+.wrap ul li:nth-child(1){
+    transform-origin: top;
+    transform: rotateX(-90deg);
+}
+.wrap ul li:nth-child(2){
+    transform-origin: bottom;
+    transform: rotateX(90deg);
+}
+.wrap ul li:nth-child(3){
+    transform-origin: left;
+    transform: rotateY(90deg);
+}
+.wrap ul li:nth-child(4){
+    transform-origin: right;
+    transform: rotateY(-90deg);
+}
+.wrap ul li:nth-child(5){
+    transform: translateZ(-200px);
+}
+.wrap ul li:nth-child(6){
+    transform:translateZ(0px);
+}
+/*@keyframes move {
+    0%{
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    100%{
+        transform: rotateX(360deg) rotateY(360deg);
+    }
+}*/
+ @keyframes move
+{
+    from
+    {
+        -webkit-transform: translateZ(0px) rotateX(0deg) rotateY(0deg);
+        transform: translateZ(0px) rotateX(0deg) rotateY(0deg);
+    }
+
+    to
+    {
+        -webkit-transform: translateZ(0px) rotateX(0deg) rotateY(720deg);
+        transform: translateZ(0px) rotateX(0deg) rotateY(720deg);
+    }
+}
