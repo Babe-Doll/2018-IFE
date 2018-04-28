@@ -1,0 +1,189 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2018-04-27 17:00:12
+ * @version $Id$
+ */
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.st-container{
+
+	position:absolute;
+	width: 100%;
+	height: 100%;
+	left:0;
+	top:0;
+	overflow: hidden;
+	
+}
+.st-container > input,
+.st-container > label{
+	margin-top: 1%;
+	margin-left: 3%;
+	width: 15%;
+	height: 100px;
+	/*固定在页面最底部*/
+	position: fixed;
+	/*这句就是*/
+	bottom: 0;
+	/*但是写完会发现一堆导航挤一起了*/
+	/*这句是光标变成手形*/
+	cursor: pointer;
+
+}
+.st-container > input{
+	opacity: 0;
+	z-index: 1000;
+	/*优先级1000*/
+}
+
+.st-container > label{
+	opacity: 0.6;
+	z-index: 10;
+	border: 2px solid #FFF;
+	float: left;
+	background-color: #9cc5ef;
+	/*transition: background 0.3s ease;*/
+}
+
+#img1,#img1 + label{
+
+	left:0%;
+
+}
+#img2,#img2 + label{
+	left:20%;
+
+
+}
+#img3,#img3 + label{
+	left:40%;
+	
+}
+#img4,#img4 + label{
+	left:60%;
+	
+
+}
+#img5,#img5 + label{
+	 left:80%;
+	
+
+ }
+.slider ,
+.slider li{
+	width: 100%;
+	height:100%;
+	position:relative;
+
+	/*overflow:hidden;*/
+	backface-visibility:hidden;
+	
+}
+#img1:checked ~ .slider {
+	transform:translateY(0%);
+	animation: anima1 1s ease-in;
+}
+#img2:checked ~ .slider {
+	transform:translateY(-100%);
+	animation: anima2 1s ease-in;
+}
+
+#img3:checked ~ .slider {
+	transform:translateY(-200%);
+	animation: anima3 1s ease-in;
+	animation-delay:2s;
+}
+
+
+#img4:checked ~ .slider{
+	transform:translateY(-300%);
+	animation: anima4 1s ease-out;
+}
+
+#img5:checked ~.slider{
+	transform:translateY(-400%);
+	animation: anima5 0.7s ease-in-out;
+}
+
+/*
+.slider li:nth-child(1) {
+	background: url(img/1.bmp) no-repeat;
+	background-size:100%;
+	width:100%;
+    
+}
+
+.slider li:nth-child(2) {
+	background:url(img/2.bmp) no-repeat;
+	background-size:100%;
+	width:100%;
+	animation: anima2 1s ease-in;
+}
+
+.slider li:nth-child(3) {
+	background:url(img/3.bmp) no-repeat;
+	background-size:100%;
+	animation: anima3 1s ease-in;
+	
+}
+
+.slider li:nth-child(4) {
+	background:url(img/4.bmp) no-repeat;
+	background-size:100%;
+	width:100%;
+    animation: anima4 1s ease-out;
+}
+
+.slider li:nth-child(5) {
+	background:url(img/5.bmp) no-repeat;
+	background-size:100%;
+	width:100%;
+	animation: anima5 0.7s ease-in-out;
+}*/
+@-webkit-keyframes anima1 {
+	0%{
+		left: -500px;
+	}
+	100%{
+		left: 0;
+	}
+}
+
+@-webkit-keyframes anima2 {
+	0%{
+		
+		top: 350px;
+	}
+	100%{
+		
+		top: 0;
+	}
+}
+@-webkit-keyframes anima3 {
+	0%{
+		transform: scale(0.1);
+	}
+	100%{
+		transform: scale(1);
+	}
+}
+@-webkit-keyframes anima4 {
+	0%{
+		transform: scale(2);
+	}
+	100%{
+		transform: scale(1);
+	}
+}
+@-webkit-keyframes anima5 {
+	0%{
+		transform: rotate(-360deg) scale(0.1);
+	}
+	100%{
+		transform: rotate(0deg) scale(1);
+	}
+}
