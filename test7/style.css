@@ -1,0 +1,205 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2018-04-28 15:30:05
+ * @version $Id$
+ */
+
+html {
+    font-size: 62.5%;
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+}
+body {
+    font-size: 1.8em;
+    line-height: 3;
+    background-color: #eeeeee;
+}
+h3 {
+    font-size: 1.8em;
+    margin-bottom: 3rem;
+    line-height: 1.5;
+    font-weight: 800;
+}
+p {
+    margin-bottom: 1.5rem;
+}
+.site-container {
+    max-width: 320px;
+    margin: 10px auto;
+    padding-left: 0.6em;
+    padding-right: 0.6em;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+@media screen and (min-width: 60.063em) {
+    .site-container {
+        max-width: 400px;
+    }
+}
+.card {
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.24), 0 1px 18px 0 rgba(0,0,0,0.12);
+    border-radius: 2px;
+    padding: 1em 1.5em;
+}
+.form__wrapper {
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin-bottom: 1.6rem;
+    width: 100%;
+    vertical-align: top;
+}
+.form__wrapper__submit {
+    padding: 1.6rem 0;
+}
+.form__input {
+    display: block;
+    position: relative;
+    margin-top: 1em;
+    padding: 0.84em 0;
+    width: 100%;
+    box-sizing: border-box;
+    color: #444;
+    font-size: 1.6rem;
+    outline: 0;
+    border: none;
+    /*border-bottom: solid 1px #ddd;*/
+}
+.form__input:focus {
+    background-position: 0 0;
+    color: #444;
+}
+/*伪元素*/
+.form__label:before,
+.form__label:after{
+	content:"";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 81%;
+	/*线*/
+	border-bottom: 1px solid #ddd;
+
+}
+.form__label:after{
+	margin-top:0.9px;
+	border-bottom: 3px solid #2FC8FC;
+	/*这样页面显示无线段*/
+	transform:translate3d(-100%,0,0);
+    transition: transform 0.4s ;
+
+}
+.form__label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    width: 100%;
+    height: calc(99%);
+    text-align: left;
+    pointer-events: none;
+    color: #999;
+}
+.form__label__content {
+    position: absolute;
+}
+.form__input:focus ~ .form__label:after{
+    -webkit-transform:translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+.form__input:focus ~ .form__label .form__label__content,
+.form__input--filled .form__label__content{
+    -webkit-animation:anim1 0.3s forwards;
+    -moz-animation:anim1 0.3s forwards;
+    -ms-animation:anim1 0.3s forwards;
+    -o-animation:anim1 0.3s forwards;
+    animation:anim1 0.3s forwards;
+}
+/*.form__input--filled ~
+.form__input:focus ~ .form__label .form__label-content,
+.form__input--filled .form__label-content {
+    
+  
+}*/
+@-webkit-keyframes anim1{
+    0%{
+        -webkit-transform:translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+    }
+    100%{
+        -webkit-transform:translate3d(0,-30%,0);
+        transform: translate3d(-10%,-30%,0) scale(0.85,0.85);;
+        
+    }
+}
+@keyframes anim1{
+    0%{
+        -webkit-transform:translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+    }
+    100%{
+        -webkit-transform:translate3d(0,-30%,0);
+        transform: translate3d(-10%,-30%,0) scale(0.85,0.85);
+        
+    }
+}
+.btn {
+    width: 100%;
+    display: inline-block;
+    padding: 0.7em 1.5em;
+    border-radius: 2px;
+    background-color: #2196f3;
+    color: #fff;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 1.6rem;
+    box-shadow: 0 1px 3px 0 rgba(3,30,51,0.24), 0 1px 2px 0 rgba(3,30,51,0.12);
+    transition: all 0.2s ease;
+}
+.btn:focus,
+.btn:hover {
+    background-color: #0d8aee;
+
+}
+.btnchange{
+    width: 100%;
+    display: inline-block;
+    padding: 0.7em 1.5em;
+    border-radius: 2px;
+    background-color: #2196f3;
+    color: #fff;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 1.6rem;
+    box-shadow: 0 1px 3px 0 rgba(3,30,51,0.24), 0 1px 2px 0 rgba(3,30,51,0.12);
+    
+    -webkit-animation:anim2 1s infinite;
+    animation:anim2 1s infinite;
+}
+@-webkit-keyframes anim2{
+    0%{
+        -webkit-transform:scale(0.95,0.95);
+        transform: scale(0.95,0.95);
+    }
+    50%{
+        -webkit-transform:scale(1.06,1.06);
+        transform: scale(1.06,1.06);
+    }
+    100%{
+        -webkit-transform:scale(0.95,0.95);
+        transform: scale(0.95,0.95);
+    }
+}
