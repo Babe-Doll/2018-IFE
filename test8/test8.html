@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>ae动画转web动画练习~</title>
+<script type="text/javascript" src="lottie.js"></script>
+<style type="text/css" media="screen">
+body{
+	background: pink;
+
+}
+#animation1{
+	width: 50%;
+	height: 500px;
+	float: left;
+}
+#animation2{
+	width: 49%;
+	height: 500px;
+	float: left;
+	border-left: 3px solid #FCDDFA;
+}
+</style>
+</head>
+<body>
+    <div id="animation1">
+    	
+    </div>
+    <div id="animation2">
+    	
+    </div>
+    <script type="text/javascript">
+    	var a1=lottie.loadAnimation({
+	    container: document.getElementById('animation1'), // the dom element that will contain the animation
+	    renderer: 'svg',
+	    loop: true,
+	    autoplay: true,
+	    path: 'data.json' // the path to the animation json
+	    });
+
+	    var a2=lottie.loadAnimation({
+	    container: document.getElementById('animation2'), // the dom element that will contain the animation
+	    renderer: 'svg',
+	    loop: false,
+	    autoplay: false,
+	    path: 'data2.json' // the path to the animation json
+	    });
+	    // 鼠标hover
+		document.getElementById("animation2").addEventListener("mouseenter",function () {
+			a2.play()
+			},false)
+		document.getElementById("animation2").addEventListener("mouseleave",function () {
+			a2.stop()
+		},false)
+    </script>
+</body>
+</html>
