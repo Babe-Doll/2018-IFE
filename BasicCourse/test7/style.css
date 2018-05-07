@@ -1,0 +1,230 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    display:-webkit-flex;
+    display:flex;
+    width: 100%;
+    height:80px;
+    position: absolute;
+    background:	#3C3F46;
+    /*flex-direction:row;*/
+    justify-content:center;
+    /*flex-wrap:nowrap;*/
+
+}
+.head-container{
+    width: 960px;
+    height: 80px;
+    position: absolute;
+    background: #3C3F46;
+
+}
+.logo{
+    width:480px;
+    height:80px;
+    padding-top: 20px;
+    position: absolute;
+    background:#3C3F46;
+    /*float: left;*/
+    color:#ffffff;
+    font-size: 30px;
+}
+.link{
+    width: 480px;
+    height:80px;
+    position: absolute;
+    background: #3C3F46;
+    margin-left: 480px;
+    color: #ffffff;
+
+}
+.link ul li{
+    float: right;
+    list-style-type: none;
+    padding-left: 10px;
+    text-decoration: underline;
+}
+.banner{
+    width: 100%;
+    height:300px;
+    top: 80px;
+    position: absolute;
+    background: #40CD40;
+    /*float: left;*/
+}
+.num ul{
+    top: 240px;
+    right: 20%;
+    position: absolute;
+
+}
+.num ul li{
+    width: 25px;
+    height: 25px;
+    background:#90FE99;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+    display:inline-block;
+    margin-left: 5px;
+    list-style-type: none;
+    text-align: center;
+    color: #8c8c8c;
+    vertical-align: bottom;
+}
+.num .s-checked{
+    width: 25px;
+    height: 50px;
+    background:#CEFCE2;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+    display:inline-block;
+    margin-left: 5px;
+    list-style-type: none;
+    text-align: center;
+    color: #8c8c8c;
+    vertical-align: bottom;
+
+}
+.main{
+    width:100%;
+    height:690px;
+    top:380px;
+    position: absolute;
+    background: salmon;
+}
+.nav{
+    width:100%;
+    height:60px;
+
+    /*position: absolute;*/
+    background: aquamarine;
+
+}
+.nav-left{
+    width:calc((100% - 960px)/2);
+    height:60px;
+    position: absolute;
+    background: white;
+    float: left;
+    border-bottom: 1px solid #8c8c8c;border-bottom: 1px solid #8c8c8c;
+}
+.nav-sub{
+    width:305px;
+    height:60px;
+    left: calc((100% - 960px)/2);
+    position: absolute;
+    background: white;
+    float: left;
+    overflow: hidden;
+}
+.nav-right{
+    width:calc(100% - (100% - 960px) /2 - 305px);
+    height:60px;
+    left:calc((100% - 960px) /2 + 305px) ;
+    position: absolute;
+    background: white;
+    float: left;
+    border-bottom: 1px solid #8c8c8c;
+}
+.nav-sub ul li{
+    height:50px;
+    width:100px;
+    line-height: 50px;
+    position: relative;
+    text-align: center;
+    float: left;
+    list-style-type: none;
+    margin-top: 8.7px;
+    background: #cccccc;
+    cursor: pointer;
+    border: 1px solid #8c8c8c;
+    border-top-left-radius:1em;
+    border-top-right-radius:1em;
+    overflow: hidden;
+}
+.nav-sub .checked{
+    height:50px;
+    width:100px;
+    line-height: 50px;
+    position: relative;
+    text-align: center;
+    float: left;
+    list-style-type: none;
+    margin-top:8.7px;
+    cursor: pointer;
+    background: white;
+    border-left: 1px solid #8c8c8c;
+    border-right: 1px solid #8c8c8c;
+    border-top: 1px solid #8c8c8c;
+    border-bottom: 1px solid white;
+    border-top-left-radius:1em;
+    border-top-right-radius:1em;
+    overflow: hidden;
+}
+.cont:nth-child(2){
+    display: none;
+}
+.cont:nth-child(3){
+    display: none;
+}
+.content{
+    width:100%;
+    height:650px;
+    /*padding-top: 15%;*/
+    /*position: absolute;*/
+    background:white;
+    overflow: hidden;
+}
+.cont{
+    width: 960px;
+    position: absolute;
+    left: calc((100% - 960px)/2);
+    display: flex;
+    flex-wrap: wrap;
+}
+.ct-flex{
+    display: flex;
+    width: 100%;
+
+}
+.ct-flex div{
+    flex: 1;
+    border: 1px solid #ddd;
+    padding: 80px;
+    line-height: 40px;
+    margin-top: 10px;
+    text-align: center;
+}
+/*间隙*/
+.ct-flex:nth-child(1) div:nth-child(2) {
+    margin: 10px 10px 0 10px;
+}
+.ct-flex:nth-child(2) div:nth-child(2) {
+    margin: 10px 10px 0 10px;
+}
+.ct-flex:nth-child(2) div:nth-child(3) {
+    margin: 10px 10px 0 0;
+}
+.ct-flex:nth-child(3) div:nth-child(2) {
+    margin: 10px 10px 10px 10px;
+}
+.ct-flex:nth-child(3) div {
+    margin: 10px 0 10px 0;
+}
+.footer{
+    width: 100%;
+    height: 150px;
+    position: absolute;
+    overflow: hidden;
+    top:1090px;
+    background: #A09C9C;
+}
+.footer p{
+    margin:10px;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+}
