@@ -1,0 +1,448 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+}
+.menu{
+    width: 350px;
+    height: 100%;
+    float: left;
+}
+.menu-left{
+    width:100px;
+    height: 100%;
+    position:fixed;
+    background: #1d2634;
+    float: left;
+}
+.menu-img{
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+}
+.menu ul{
+    margin-left: 10px;
+}
+.menu ul li{
+    list-style-type: none;
+}
+.menu-l{
+    width:60px;
+    height: 16px;
+    margin:20px;
+    position: absolute;
+    bottom: 0;
+}
+.little-menu{
+
+    height: 16px;
+    width:30px;
+    display: inline-block;
+    vertical-align: bottom;
+    float: left;
+}
+/*菜单右侧*/
+.menu-right{
+    margin-left: 100px;
+    width: 250px;
+    height: 100%;
+    position:fixed;
+    background: #232C3D;
+    float: left;
+}
+.menu-r-con{
+	width: 190px;
+	height: 25%;
+	margin-left: 30px;
+	margin-top: 5%;
+	margin-bottom: 8%;
+	border-top: 1px solid #4B5768;
+	overflow: hidden;
+}
+.menu-r-h{
+	width: 190px;
+	height: 16%;
+	margin:8% 0 0 0;
+
+}
+.menu-r-h1{
+	color: #4B5768;
+	font-size:75%;
+	font-weight: 900;
+	float: left;
+}
+.menu-r-img{
+	height: 15px;
+	width:15px;
+	float: right;
+}
+.menu-r-con ul{
+	width: 190px;
+	height:79%; 
+	margin-left: 0;
+
+	
+}
+.menu-r-con ul li{
+	color:#7E8795;
+	font-size: 80%;
+    margin-top: 5%;
+}
+#num1{
+    width: 20px;
+    height: 15px;
+    border-radius: 50px;
+    background:#2A9EF6;
+    color: #fff;
+    float: right;
+    padding-left: 2%;
+    font-size: 90%;
+}
+#num2{
+    width: 20px;
+    height: 15px;
+    border-radius: 50px;
+    background:#2A9EF6;
+    color: #fff;
+    float: right;
+    padding-left: 2%;
+    font-size: 90%;
+}
+#num3{
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    border-radius: 50px;
+    background:#EF4E32;
+    color: #fff;
+    float: right;
+    font-size: 90%;
+}
+.menu-col{
+    width: 190px;
+    height: 5%;
+    bottom: 0;
+    position: absolute;
+    margin-bottom: 5%;
+    margin-left: 30px;
+}
+.col-name{
+    color:#7E8795;
+    font-size: 75%;
+    float: left;
+}
+.col-con1{
+    color:#fff;
+    font-size: 75%;
+    float: right;
+}
+.col-con2{
+    color:#7E8795;
+    font-size: 75%;
+    float: right;
+}
+.col{
+    margin-top: 10%;
+    height: 4px;
+    width: 190px;
+    
+    border-radius: 3px; 
+    background: url(images/Fill.png) no-repeat;
+    background-color:#2D3848;
+}
+/*聊天框*/
+.chat{
+    position: relative;
+    margin-left: 350px;
+
+}
+.chat-top{
+    width: 100%;
+    height: 80px;
+    
+    position: absolute;
+    border-bottom: 1px solid #e6e9ec;
+}
+.chat-mes{
+    color: #414B5C;
+    height: 80px;
+    padding-left: 30px;
+    font-size: 20px;
+    padding: 30px;
+    float: left;
+
+}
+.chat-top .admin{
+    width: 200px;
+    height:80px;
+    float:right;
+    margin-right: 30px;
+
+}
+.admin #img1{
+    margin-top: 15px;
+    width: 50px;
+    height: 50px;
+    float: left;
+    background: url(images/admin.png);
+}
+.admin-name{
+    color: #4CACF4;
+    font-size: 15px;
+    float: left;
+}
+.admin-p{
+    color: #C1C1C1;
+    font-size: 11px;
+
+}
+#img2{
+    margin-top:32.5px;
+    margin-bottom:32.5px;
+    width: 15px;
+    height: 15px;
+    float: left;
+}
+.admin-info{
+    margin:20px 15px 15px  15px;
+    height: 50px;
+    width: 90px;
+    float: left;
+}
+
+/*聊天框左边*/
+.chat-left{
+    width: 400px;
+    top: 80px;
+    position: absolute;
+    border-right: 1px solid #e6e9ec;
+}
+.chat-search{
+    width:400px; 
+    height: 70px;
+}
+.search{
+    width: 340px;
+    border: 1px solid #e6e9ec;
+    border-radius: 5px;
+    height: 34px;
+    margin:17px 30px;
+    color: #e6e9ec;
+    padding: 0 15px;
+}
+/*左边聊天框*/
+.chat-record{
+    border-top:  1px solid #e6e9ec;
+    height: 130px;
+    width: 400px;
+
+}
+/*聊天框上半部分*/
+.chat-peo{
+    width: 360px;
+    height: 50px;
+    margin: 10px 20px;
+}
+/*聊天框上半部分的左边*/
+.peo-info{
+    width: 250px;
+    height: 50px;
+    float: left;
+}
+
+.peo-photo{
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+.peo-name{
+    width: 150px;
+    height: 50px;
+    float: left;
+    margin:12px ;
+}
+ p:nth-child(1){
+    color: #585d68;
+    font-size: 15px;
+  
+}
+ p:nth-child(2){
+    color: #CDCDCD;
+    font-size: 13px;
+
+}
+/*聊天框上半部分的右边*/
+.peo-min{
+    font-size: 13px;
+    color: #A5B1BF;
+    float: right;
+    margin-top: 15px;
+}
+
+/*下面*/
+.chat-content{
+    width: 360px;
+    height: 50px;
+    color: #A5B1BF;
+    font-size: 13px;
+    margin:0px 20px 10px 20px;
+}
+/*聊天框右侧*/
+.chat-right{
+    width: calc(100% - 400px);
+    margin-top: 80px;
+    margin-left: 400px;
+    position: absolute;
+}
+/*右侧头部*/
+.chat-r-top{
+    height: 70px;
+    border-bottom: 1px solid #e6e9ec;
+}
+.chat-r-name{
+    width:120px;
+    font-size: 18px;
+    margin: 26px 0 26px 26px;
+    color: #757982;
+    float: left;
+}
+.bt1{
+    width: 120px;
+    float: right;
+    height: 30px;
+    margin: 20px 0;
+    border-right: 1px solid #e6e9ec;
+
+}
+.bt2{
+    width: 120px;
+    float: right;
+    height: 30px;
+    margin: 20px 30px;
+}
+.chat-button{
+    width: 30px;
+    height: 30px;
+    
+    border: 1px solid #e6e9ec;
+    float: right;
+}
+.chat-button-p{
+    color: #757982;
+    font-size: 15px;
+    text-align: center;
+    margin-top: 5px;
+    float: left;
+}
+/*聊天内容*/
+.chat-r-con1{
+
+}
+/*.chat-r-con1 > div{*/
+    /*height: 90px;*/
+    /*padding: 25px 30px 0 30px;*/
+/*}*/
+.chat-r-ct{
+    height: 110px;
+    padding: 25px 30px 0 30px;
+}
+.chat-peo-photo{
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+.chat-r-name2{
+    font-size: 15px;color: #757982;
+    float: left;
+}
+.chat-r-time{
+    padding-left: 20px;
+    font-size: 15px;color: #A5B1BF;
+    float: left;
+}
+.chat-r-condown{
+    margin-left: 60px;
+}
+.chat-r-content{
+    margin-top: 5px;
+    font-size: 13px;
+    color:  #A5B1BF;
+    float: left;
+}
+
+.box {
+    padding: 0;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.line {
+
+    height: 1px;
+    flex-grow: 1;
+    background-color: #e6e9ec;
+
+}
+.img-con{
+    margin-top: 20px;
+    width:100%;
+    height: 100px;
+    margin-left: 90px;
+    float: left;
+}
+.img1{
+    width:160px;
+    height: 100px;
+    border-radius: 5px;
+    margin-right: 10px;
+    float: left;
+}
+.img2{
+    border-radius: 5px;
+    width:160px;
+    height: 100px;
+    float: left;
+}
+.back-message{
+    width: 90%;
+    border-radius: 5px;
+    height: 50px;
+    margin: -60px 5%;
+    bottom:0;
+    position: absolute;
+    border: 1px solid #e6e9ec;
+}
+.add{
+    height: 50px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 50px;
+    border: 1px solid #e6e9ec;
+    background: url("images/demo_81.gif") no-repeat center;
+    background-size: cover;
+    float: left;
+}
+.txt{
+    width:calc(100% - 50px);
+    height: 50px;
+    font-size:13px;
+    border-top:1px solid #e6e9ec ;
+    border-left:1px solid #e6e9ec ;
+    color:#A5B1BF;
+    float: left;
+}
+#num4{
+    width: 15px;
+    height: 15px;
+    border-radius: 50px;
+    background: #2A9EF6;
+    color: #fff;
+    float: right;
+    padding-left: 1%;
+    font-size: 90%;
+}
