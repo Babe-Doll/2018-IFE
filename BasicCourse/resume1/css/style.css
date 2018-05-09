@@ -1,0 +1,523 @@
+﻿@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2018-04-25 14:35:45
+ * @version $Id$
+ */
+ *{
+    box-sizing:border-box;
+ }
+body{
+	font-family: Georgia, Times, "Times New Roman", serif;
+	background: #ddd;
+	font-weight: 200;
+	color: #333;
+	overflow: hidden;
+	-webkit-font-smoothing:antialiased;
+    -moz-font-smoothing:antialiased;
+    -o-font-smoothing:antialiased;
+
+}
+a{
+	text-decoration: none;/*去下划线*/
+	color:#555;
+}
+/*清除浮动*/
+.clr{
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	clear: both;
+	padding: 0;
+	margin: 0;
+}
+.st-container{
+	width:100%;
+	/*页面多大这个多大*/
+	height: 100%;
+	/*绝对定位*/
+	position: absolute;
+	left:0;
+	top: 0;
+    font-family: Lucida Sans Unicode", "Lucida Grande", sans-serif;";
+
+
+}
+.st-container > input,
+.st-container > a{
+	width: 33.333333333%;
+	height: 34px;
+	line-height: 34px;
+	/*固定在页面最底部*/
+	position: fixed;
+	/*这句就是*/
+	bottom: 0;
+	/*但是写完会发现一堆导航挤一起了*/
+	/*这句是光标变成手形*/
+	cursor: pointer;
+}
+.st-container > input{
+	opacity: 0;
+	z-index: 1000;
+	/*优先级1000*/
+}
+.st-container > a{
+	z-index: 10;
+
+	font-weight: 700; 
+	font-size: 16px;
+	background: #e23a6e;
+	text-align: center;
+	color: #fff;
+	/*水平1 垂直1 模糊1*/
+
+	text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
+    transition: background 0.3s ease;
+}
+/* 
++我们元素的后面那个元素
+~表示后面所有的a
+*/
+#st-control-1,#st-control-1 +a{
+	left: 0%;
+
+}
+#st-control-2,#st-control-2 +a{
+	left: 33.333333%;
+
+}
+#st-control-3,#st-control-3 +a{
+	left: 66.6666666%;
+
+}
+
+/*设置的是input选中后的样式*/
+.st-container input:checked +a,
+.st-container input:checked:hover +a
+{
+	background: #821134;
+}
+/*因为是动态生成 并且生成在a的最后 所以要用after*/
+.st-container input:checked + a:after{
+	/*生成内容为空*/
+	content:"";
+	/*做一个三角形*/
+	height: 0;
+	width:0;
+	overflow: hidden;
+	border: 20px solid transparent;
+	border-bottom-color:  #821134;
+	position: absolute;
+	/*三角形出现在导的最上方*/
+	bottom: 100%;
+	left: 50%;
+	/*border是20 那宽度是40*/
+	margin-left: -20px;
+}
+/*鼠标滑过*/
+.st-container input:hover + a{
+	background: #AD244F;
+
+}
+/*内容区*/
+.st-scroll,
+.st-panel{
+	width: 100%;
+	height: 100%;
+	position: relative;
+
+}
+.st-scroll{
+	/*左对齐*/
+	left: 0;
+	top: 0;
+	/*3d可以开启GPU硬件加速，所以不建议2d  zyz 000*/
+	-webkit-transform:translate3d(0,0,0);
+	-moz-transform:translate3d(0,0,0);
+	-o-transform:translate3d(0,0,0);
+	-ms-transform:translate3d(0,0,0);
+	transform:translate3d(0,0,0);
+	/*只有面向我们屏幕才显示*/
+	-webkit-backface-visibility:hidden;
+	/*过渡 全部 0.6秒 由慢到快*/
+	-webkit-transition:all 0.6s ease-in-out;
+	-moz-transition:all 0.6s ease-in-out;
+	-o-transition:all 0.6s ease-in-out;
+	-ms-transition:all 0.6s ease-in-out;
+	transition:all 0.6s ease-in-out;
+
+}
+.st-panel{
+	background: #fff;
+	overflow: hidden;
+
+}
+/*~不强调一定紧跟在后面*/
+#st-control-1:checked ~ .st-scroll{
+	/*页面切换指在y轴上发生变化*/
+	-webkit-transform:translateY(0%);
+	-moz-transform:translateY(0%);
+	-o-transform:translateY(0%);
+	-ms-transform:translateY(0%);
+	transform:translateY(0%);
+
+}
+#st-control-2:checked ~ .st-scroll{
+	/*页面切换指在y轴上发生变化*/
+	-webkit-transform:translateY(-100%);
+	-moz-transform:translateY(-100%);
+	-o-transform:translateY(-100%);
+	-ms-transform:translateY(-100%);
+	transform:translateY(-100%);
+
+}
+#st-control-3:checked ~ .st-scroll{
+	/*页面切换指在y轴上发生变化*/
+	-webkit-transform:translateY(-200%);
+	-moz-transform:translateY(-200%);
+	-o-transform:translateY(-200%);
+	-ms-transform:translateY(-200%);
+	transform:translateY(-200%);
+
+}
+.st-desc{
+	width: 200px;
+	height: 200px;
+	background: #fa96b5;
+	position: absolute;
+	left: 50%;
+	top:0;
+	margin-left: -100px;
+	-webkit-transform:translateY(-50%) rotate(45deg);
+	-moz-transform:translateY(-50%) rotate(45deg);
+	-o-transform:translateY(-50%) rotate(45deg);
+	-ms-transform:translateY(-50%) rotate(45deg);
+	transform:translateY(-50%) rotate(45deg);
+
+}
+/*属性选择器*/
+/*after是在一个元素的最后插入内容*/
+[data-icon]:after {
+    content:attr(data-icon);
+    width:200px;
+    height:200px;
+
+    color:#fff;
+    font-size:90px;
+    text-align:center;
+    line-height:200px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    /*上边往上挪100像素 左边挪100像素
+        */
+    margin:-100px 0 0 -100px;
+    -webkit-transform:rotate(-45deg) translateY(25%);
+    -moz-transform:rotate(-45deg) translateY(25%);
+    -o-transform:rotate(-45deg) translateY(25%);
+    -ms-transform:rotate(-45deg) translateY(25%);
+    transform:rotate(-45deg) translateY(25%);
+
+
+}
+.st-panel h2 {
+    color: #e23a6e;
+    font-size:54px;
+    line-height:50px;
+    text-align:center;
+    /*9倍*/
+    font-weight:900;
+    width:80%;
+    position:absolute;
+    left:10%;
+    top:50%;
+    margin-top:-150px;
+    text-shadow:1px 1px 1px rgba(151,24,64,0.2);
+    -webkit-backface-visibility:hidden;
+}
+/*动画*/
+#st-control-1:checked ~ .st-scrool #st-panel-1 h2，
+#st-control-2:checked ~ .st-scrool #st-panel-2 h2，
+#st-control-3:checked ~ .st-scrool #st-panel-3 h2 {
+    /*backwards 动画在播放前就处于开始状态*/
+    -webkit-animation:moveDown 1s ease-in-out 0.2s backwards;
+    -moz-animation:moveDown 1s ease-in-out 0.2s backwards;
+    -o-animation:moveDown 1s ease-in-out 0.2s backwards;
+     -ms-animation:moveDown 1s ease-in-out 0.2s backwards;
+    animation:moveDown 1s ease-in-out 0.2s backwards;
+  
+}
+
+@-webkit-keyframes moveDown {
+    0%{
+        -webkit-transform:translateY(-40px);
+        opacity:0;
+    }
+    100%
+    {
+        -webkit-transform:translateY(0px);
+        opacity:1;
+    }
+  
+}
+@-moz-keyframes moveDown {
+    0%{
+        -webkit-transform:translateY(-40px);
+        opacity:0;
+    }
+    100%
+    {
+        -webkit-transform:translateY(0px);
+        opacity:1;
+    }
+  
+}
+@keyframes moveDown {
+    0%{
+        -webkit-transform:translateY(-40px);
+        opacity:0;
+    }
+    100%
+    {
+        -webkit-transform:translateY(0px);
+        opacity:1;
+    }
+  
+}
+/*段落的动画*/
+.st-panel p {
+    position:absolute;
+    width:60%;
+    left:25%;
+    top:50%;
+    font-size:20px;
+    line-height:22px;
+    padding:0;
+    text-align:center;
+    -webkit-backface-visibility:hidden;
+    color:#8b8b8b;
+    margin-top:10px;
+    margin-left:-57px;
+
+}
+    .st-panel p:hover {
+        color:#e23a6e;
+        transition: 0.5s;
+        
+    }
+
+/*碰撞的动画*/
+#st-control-1:checked ~ .st-scroll #st-panel-1 #a,
+#st-control-2:checked ~ .st-scroll #st-panel-2 #b,
+#st-control-3:checked ~ .st-scroll #st-panel-3 p {
+    -webkit-animation:moveUp 1s ease-in-out 0.2s backwards;
+    -moz-animation:moveUp 1s ease-in-out 0.2s backwards;
+    -o-animation:moveUp 1s ease-in-out 0.2s backwards;
+     -ms-animation:moveUp 1s ease-in-out 0.2s backwards;
+    animation:moveUp 1s ease-in-out 0.2s backwards;
+}
+@-webkit-keyframes moveUp {
+
+    0% {
+        -webkit-transform:translateY(40px);
+        opacity:0;
+    }
+    100% {
+        -webkit-transform:translateY(0px);
+        opacity:1;
+    }
+}
+@-moz-keyframes moveUp {
+
+    0% {
+        -webkit-transform:translateY(40px);
+        opacity:0;
+    }
+    100% {
+        -webkit-transform:translateY(0px);
+        opacity:1;
+    }
+}
+@keyframes moveUp {
+
+    0% {
+        -webkit-transform:translateY(40px);
+        opacity:0;
+    }
+    100% {
+        -webkit-transform:translateY(0px);
+        opacity:1;
+    }
+}
+
+.st-color {
+    background:#fa96b5;
+}
+.st-color .st-desc{
+    background:#fff;  
+  }
+.st-color [data-icon]:after{
+        color:#fa96b5;
+}
+.st-color h2 {
+    color:#fff;
+    text-shadow:1px 1px 1px rgba(0,0,0,0.1);
+    }
+.st-color p {
+    color:rgba(255,255,255,0.8);
+
+}
+/*响应式*/
+@media screen and (max-width:520px)  {
+    .st-panel h2 {
+        font-size:42px;
+    }
+    .st-panel p {
+        width:90%;
+        left:10%;
+        margin-top:0;
+    }
+    .st-container > a {
+        font-size: 13px;
+    }
+}
+@media screen and (max-width:360px)  {
+    .st-panel h2 {
+        font-size:30px;
+    }
+    .st-panel p {
+        width:90%;
+        left:10%;
+        margin-top:0;
+    }
+    .st-container > a {
+        font-size: 10px;
+    }
+    .st-desc {
+        width: 120px;
+        height: 120px;
+        margin-left: -60px;
+    }
+    [data-icon]:after {
+    -webkit-transform:rotate(-45deg) translateY(15%);
+    -moz-transform:rotate(-45deg) translateY(15%);
+    -o-transform:rotate(-45deg) translateY(15%);
+    -ms-transform:rotate(-45deg) translateY(15%);
+    transform:rotate(-45deg) translateY(15%);
+    }
+}
+    
+/*2018.11.51*/
+.st-about{
+    text-align: center;
+    width: 80%;
+    margin: 300px 10%;
+    font-size:20px;
+    line-height:22px;
+    padding:0;
+    text-align:center;
+    -webkit-backface-visibility:hidden;
+    color:#8b8b8b;
+    transition: 0.5s;
+
+}
+.st-head{
+    width: 80%;
+    top: 200px;
+    color: #e23a6e;
+    font-size:54px;
+    text-align:center;
+    /*9倍*/
+    font-weight:900;
+    position:absolute;
+    text-shadow:1px 1px 1px rgba(151,24,64,0.2);
+    -webkit-backface-visibility:hidden;
+}
+.st-greet{
+    display: flex;
+    justify-content: center;
+    height: 20px;
+    font-size: 20px;
+    font-family:Microsoft YaHei;
+    margin: 40px 0;
+
+    text-align: center;
+
+}
+.greet-left{
+    text-shadow:1px 1px 1px rgba(151,24,64,0.2);
+    float: left;
+    color: #821134;
+}
+.greet-right{
+    float: left;
+    color: #fff;
+    text-shadow:1px 1px 1px rgba(0,0,0,0.2);
+}
+
+.st-about:hover {
+   color:#e23a6e;
+    transition: 0.5s;
+        
+}
+.welcome{
+    font-family:Microsoft YaHei;
+    text-shadow:1px 1px 1px rgba(0,0,0,0.2);
+    color: #fff;
+}
+.link a{
+    line-height: 50px;
+    text-shadow:1px 1px 1px rgba(0,0,0,0.2);
+    color: pink;
+}
+.link a:hover{
+    color:#821134;
+    text-shadow:1px 1px 2px rgba(0,0,0,0.2);
+}
+/*页面2*/
+.st-myinfo-con{
+    width: 100%;
+    text-align: center;
+    
+}
+.st-myinfo-panel{
+    width: 100%;
+    text-align: center;
+}
+.st-con{
+    display: inline-block;
+    color: #fff;
+    background: pink;
+    border-radius: 3px;
+    margin-right: 3px;
+    margin-bottom: 6px;
+    padding: 3px 15px;
+    text-align: center;
+}
+.st-con:hover{
+    box-shadow: 0 0 30px  rgb(226, 58, 110,1);
+}
+
+#btn1{
+    background:#E23A6E;
+    color: pink;
+    border-radius: 6px;
+    border: 1px solid pink;
+    margin:20px;
+    
+}
+#btn1:hover{
+    box-shadow: 0 0 30px rgb(226, 58, 110,1);
+}
+.st-myinfo-con2{
+    width: 100%;
+    text-align: center;
+    font-family: Microsoft YaHei;
+    display: none;
+}
+.st-myinfo-conopen{
+    width: 100%;
+    text-align: center;
+    font-family: Microsoft YaHei;
+}
