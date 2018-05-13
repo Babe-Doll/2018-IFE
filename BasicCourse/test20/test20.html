@@ -179,7 +179,7 @@
         var counts=1;
         var y=0;//y
         setInterval(function() {
-            anima.style.backgroundPositionY = y+"px";//长图改变其位置
+            anima.style.backgroundPositionY = -y+"px";//长图改变其位置
            //慢慢加
             y+=480*counts;
             if(y>=7680 || y<=0)//超过长图长度后重新开始
