@@ -176,17 +176,18 @@
     //编码五
     function ani() {
         var anima=document.getElementById("anima");
-        var count=0;//x
-        var counts=0;//y
+        var counts=1;
+        var y=0;//y
         setInterval(function() {
-            anima.style.backgroundPosition = ((count)+"px "+(counts)+"px");//长图改变其位置
-            count+=480;//慢慢加
-            counts+=480;
-            if(count>=8160)//超过长图长度后重新开始
+            anima.style.backgroundPositionY = y+"px";//长图改变其位置
+           //慢慢加
+            y+=480*counts;
+            if(y>=7680 || y<=0)//超过长图长度后重新开始
             {
-                count=480;
-                counts=480;
+                counts=-1*counts;
+                // counts=-counts;
             }
+
         },100);
 
     }
