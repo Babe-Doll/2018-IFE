@@ -128,19 +128,35 @@
         
     }
 
-    //编码三
-    function  change() {
-        var list = document.querySelectorAll("li");
-        for (var i = i = 0, len = list.length; i < len; i++) {
-            list[i].onclick = function(e) {
-                var t = e.target;
-                var c = t.style.backgroundColor;
-                var p = document.getElementsByClassName("color-picker")[0]
-                p.innerHTML = c;
-                p.style.color = c;
-
+        function  change() {
+        //原代码
+        // var list = document.querySelectorAll("li");
+        // for (var i = i = 0, len = list.length; i < len; i++) {
+        //     list[i].onclick = function(e) {
+        //         var t = e.target;
+        //         var c = t.style.backgroundColor;
+        //         var p = document.getElementsByClassName("color-picker")[0]
+        //         p.innerHTML = c;
+        //         p.style.color = c;
+        //
+        //     }
+        // }
+        //事件代理，萌新 = =可能写的不好
+        var ul=document.getElementsByClassName('palette')[0];
+        ul.addEventListener('click',function (ev) {
+            var target =ev.target;
+            while(target !== ul){
+                if(target.tagName.toLowerCase() == 'li'){
+                    var c = target.style.backgroundColor;
+                    var p = document.getElementsByClassName("color-picker")[0];
+                    p.innerHTML = c;
+                    p.style.color = c;
+                    break;
+                }
+                target = target.parentNode;
             }
-        }
+
+        })
     }
     document.getElementById("show-btn").style.display="none";
 
