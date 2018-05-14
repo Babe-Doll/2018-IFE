@@ -161,16 +161,19 @@
     document.getElementById("show-btn").style.display="none";
 
     //编码四
+    document.getElementById("show-btn").style.display="none";
     function show() {
         var obj=document.getElementById("fade-obj");
         var num = 0;
         var st =setInterval(function () {
             num++;
             obj.style.opacity = num/10;
+            document.getElementById("show-btn").disabled=true;
             if(num>=10){
                 clearInterval(st);
                 document.getElementById("fade-btn").style.display="";
                 document.getElementById("show-btn").style.display="none";
+                document.getElementById("show-btn").disabled=false;
             }
         },30);
     }
@@ -182,10 +185,12 @@
             num--;
             flag = false;
             obj.style.opacity = num / 10;
+            document.getElementById("fade-btn").disabled=true;
             if (num <= 0) {
                 clearInterval(st);
                 document.getElementById("fade-btn").style.display="none";
                 document.getElementById("show-btn").style.display="";
+                document.getElementById("fade-btn").disabled=false;
             }
         },30);
     }
