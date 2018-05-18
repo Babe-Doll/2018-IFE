@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test22</title>
+</head>
+<body>
+//编码一
+<div>
+    <label>Number A:<input id="radio-a" type="radio" name="math-obj" value="a"></label><input id="num-a" type="text">
+    <label>Number B:<input id="radio-b" type="radio" name="math-obj" value="b"></label><input id="num-b" type="text">
+</div>
+<div>
+    <button onclick="isnum()">判断当前选中的输入框输入内容是否为数字</button>
+    <button onclick="round()">把 A 四舍五入为 B 个小数位数的数字</button>
+    <button onclick="abvalue()">当前选中数字的绝对值</button>
+    <button onclick="roundup()">对当前选中的数字进行上舍入</button>
+    <button onclick="rounddown()">对当前选中的数字进行下舍入</button>
+    <button onclick="round2()">把当前选中的数字四舍五入为最接近的整数</button>
+    <button onclick="maxvalue()">返回 A 和 B 中的最高值</button>
+    <button onclick="minvalue()">返回 A 和 B 中的最低值</button>
+</div>
+<p id="result"></p>
+
+//编码2
+<div>
+    <label>String A:
+        <input id="radio-a2" type="radio" checked="true" name="str-obj" value="a">
+    </label>
+    <textarea id="str-a"></textarea>
+    <label>String B:
+        <input id="radio-b2" type="radio" name="str-obj" value="b">
+    </label>
+    <textarea id="str-b"></textarea>
+    <label>Num A：<input id="num-a2" type="number" value="0"></label>
+    <label>Num B：<input id="num-b2" type="number" value="1"></label>
+</div>
+<div>
+    <button onclick="conlength()">获取当前选中输入的内容长度</button>
+    <button onclick="thirdcon()">当前选中输入中的第3个字符</button>
+    <button onclick="concha()">把两个输入框的文字连接在一起输出（concat）</button>
+    <button onclick="indexo()">输入B中的内容，在输入A的内容中第一次出现的位置（indexOf）</button>
+    <button onclick="lastindexo()">输入A中的内容，在输入B的内容中最后一次出现的位置（lastIndexOf）</button>
+    <button onclick="slic()">使用slice获取选中输入框内容的部分内容，参数为num-a及num-b</button>
+    <button onclick="spil()">当前选中输入框的行数</button>
+    <button onclick="subst()">使用substr获取选中输入框内容的子字符串，参数为num-a及num-b</button>
+    <button onclick="upper()">把所选输入框中的内容全部转为大写</button>
+    <button onclick="lower()">把所选输入框中的内容全部转为小写</button>
+    <button onclick="replacebk()">把所选输入框中内容的半角空格全部去除</button>
+    <button onclick="replacecon()">把所选输入框中内容的a全部替换成另外一个输入框中的内容</button>
+</div>
+<p id="result2"></p>
+
+//编码三
+<p>直接显示在控制台啦</p>
+
+//编码四
+<input type="text" id="name1" >
+<button  id="btn1">search id</button>
+<input type="text" id="id" >
+<button  id="btn2">search name</button>
+<button  id="btn3" onclick="getListWithDLR(tree)">前序</button>
+<button  id="btn4" onclick="getListWithLDR(tree)">中序</button>
+<button  id="btn5" onclick="getListWithLRD(tree)">后序</button>
+<br>
+//编码五
+<br>
+<input id="queue-input" type="text">
+<p id="queue-cont">队列内容：apple-&gt;pear</p>
+<button id="in-btn" onclick="queuein()">入队</button>
+<button id="out-btn" onclick="queueout()">出队</button>
+<button id="font-btn" onclick="queuefirst()">打印队头元素内容</button>
+<button id="empty-btn" onclick="queuenull()">判断队列是否为空</button>
+<br>
+//编码六
+<br>
+<input id="stack-input" type="text">
+<p id="stack-cont">栈内容：applelt;-pear</p>
+<button id="push-btn" onclick="stackin()">进栈</button>
+<button id="pop-btn" onclick="stackout()">退栈</button>
+<button id="font-btn2" onclick="stackfirst()">打印栈顶元素内容</button>
+<button id="empty-btn2" onclick="stacknull()">判断栈是否为空</button>
+
+//编码七
+<p >冒泡排序，结果在控制台</p>
+<button  onclick="sortnum(arr)">冒泡排序</button>
+/编码八
+<p >a-z与z-a排序，结果在控制台</p>
+<button  onclick="sortvalue(arr2)">冒泡排序</button>
+
+//编码久
+<button  onclick="console.log(arr3.sort(ascend))">数组排序,结果打印在控制台</button>
+//编码⑩
+<button  onclick="console.log(arr4.sort(jsondescend))">json排序,结果打印在控制台</button>
+//编码十一
+<button  onclick="console.log(json_array(scoreObject))">对象转数组</button>
+
+<script>
+    //编码一
+    //判断数字
+    function isnum() {
+        var numa=document.getElementById("num-a").value;
+        var numb=document.getElementById("num-b").value;
+        var lab1=document.getElementById("radio-a");
+        var lab2=document.getElementById("radio-b");
+        if(lab1.checked==true){
+            if(isNaN(numa)){
+                console.log("输入错误，请重新输入");
+                return false;
+            }else{
+                alert("NumberA输入正确");
+            }
+        }else if(lab2.checked==true){
+            if(isNaN(numb)){
+                console.log("输入错误，请重新输入");
+                return false;
+            }else{
+                alert("NumberB输入正确");
+            }
+        }
+    }
+//a的b位四舍五入
+    function round() {
+        var numa=document.getElementById("num-a").value;
+        var numb=document.getElementById("num-b").value;
+        if (isNaN(numa)||isNaN(numb)){
+            console.log("输入错误，请重新输入");
+            return false;
+        } else {
+        }
+        var result=Number(numa).toFixed(numb);
+        document.getElementById("result").innerHTML=result;
+    }
+//当前选择数字的绝对值
+    function abvalue() {
+        var numa=document.getElementById("num-a").value;
+        var numb=document.getElementById("num-b").value;
+        var lab1=document.getElementById("radio-a");
+        var lab2=document.getElementById("radio-b");
+        if(lab1.checked==true){
+            if(isNaN(numa)){
+                console.log("输入错误，请重新输入");
+                return false;
+            }else{
+                document.getElementById("result").innerHTML=Math.abs(numa);
+            }
+        }else if(lab2.checked==true){
+            if(isNaN(numb)){
+                console.log("输入错误，请重新输入");
+                return false;
+            }else{
+                document.getElementById("result").innerHTML=Math.abs(numb);
+            }
+        }
+    }
+    //对当前的数字进行上舍入
+    function roundup() {
+        var numa=document.getElementById("num-a").value;
+        var numb=document.getElementById("num-b").value;
+        var lab1=document.getElementById("radio-a");
+        var lab2=document.getElementById("radio-b");
+        if(lab1.checked==true){
+            if(isNaN(numa)){
+                console.log("输入错误，请重新输入");
+                return false;
+            }else{
+                document.getElementById("result").innerHTML=Math.ceil(numa);
+            }
+        }else if(lab2.checked==true){
+            if(isNaN(numb)){
+                console.log("输入错误，请重新输入");
+                return false;
+            }else{
+                document.getElementById("result").innerHTML=Math.ceil(numb);
+            }
+        }
+    }
+    //对当前选中数字下舍入
+    function rounddown() {
+        var numa=document.getElementById("num-a").value;
+        var numb=document.getElementById("num-b").value;
+        var lab1=document.getElementById("radio-a");
+        var lab2=document.getElementById("radio-b");
+        if(lab1.checked==true){
+            if(isNaN(numa)){
+                console.log("输入错误，请重新输入");
+                return false;
+            }else{
+                document.getElementById("result").innerHTML=Math.floor(numa);
+            }
+        }else if(lab2.checked==true){
+            if(isNaN(numb)){
+                console.log("输入错误，请重新输入");
+                return false;
+            }else{
+                document.getElementById("result").innerHTML=Math.floor(numb);
+            }
+        }
+    }
+    //把当前选中的数字四舍五入为最接近的整数
+    function round2() {
+    var numa=document.getElementById("num-a").value;
+    var numb=document.getElementById("num-b").value;
+    var lab1=document.getElementById("radio-a");
+    var lab2=document.getElementById("radio-b");
+    if(lab1.checked==true){
+        if(isNaN(numa)){
+            console.log("输入错误，请重新输入");
+            return false;
+        }else{
+            document.getElementById("result").innerHTML=Math.round(numa);
+        }
+    }else if(lab2.checked==true){
+        if(isNaN(numb)){
+            console.log("输入错误，请重新输入");
+            return false;
+        }else{
+            document.getElementById("result").innerHTML=Math.round(numb);
+        }
+    }
+}
+  //最高值
+    function maxvalue() {
+        var numa=document.getElementById("num-a").value;
+        var numb=document.getElementById("num-b").value;
+        if (isNaN(numa)||isNaN(numb)){
+            console.log("输入错误，请重新输入");
+            return false;
+        } else {
+        }
+        var result=Math.max(numa,numb);
+        document.getElementById("result").innerHTML=result;
+    }
+    //最低值
+    function minvalue() {
+        var numa=document.getElementById("num-a").value;
+        var numb=document.getElementById("num-b").value;
+        if (isNaN(numa)||isNaN(numb)){
+            console.log("输入错误，请重新输入");
+            return false;
+        } else {
+        }
+        var result=Math.min(numa,numb);
+        document.getElementById("result").innerHTML=result;
+    }
+    
+    
+    //编码二
+    //获取当前选中输入的内容长度
+    function conlength() {
+        var stra=document.getElementById("str-a").value;
+        var strb=document.getElementById("str-b").value;
+        var lab1=document.getElementById("radio-a2");
+        var lab2=document.getElementById("radio-b2");
+        if(lab1.checked==true){
+            document.getElementById("result2").innerHTML=stra.length;
+        }else if(lab2.checked==true){
+            document.getElementById("result2").innerHTML=strb.length;
+        }
+    }
+    //当前选中输入中的第3个字符
+    function thirdcon() {
+        var stra=document.getElementById("str-a").value;
+        var strb=document.getElementById("str-b").value;
+        var lab1=document.getElementById("radio-a2");
+        var lab2=document.getElementById("radio-b2");
+        if(lab1.checked==true){
+            document.getElementById("result2").innerHTML=stra.charAt(2);
+        }else if(lab2.checked==true){
+            document.getElementById("result2").innerHTML=strb.charAt(2);
+        }
+    }
+    //把两个输入框的文字连接在一起输出（concat）
+    function concha() {
+        var stra=document.getElementById("str-a").value;
+        var strb=document.getElementById("str-b").value;
+        document.getElementById("result2").innerHTML="连在一起的输出结果"+stra.concat(strb);
+    }
+    //输入B中的内容，在输入A的内容中第一次出现的位置（indexOf）
+    function indexo() {
+        var stra=document.getElementById("str-a").value;
+        var strb=document.getElementById("str-b").value;
+        document.getElementById("result2").innerHTML="第一次出现的位置的下标为："+stra.indexOf(strb);
+    }
+    //输入A中的内容，在输入B的内容中最后一次出现的位置（lastIndexOf）
+    function lastindexo() {
+        var stra=document.getElementById("str-a").value;
+        var strb=document.getElementById("str-b").value;
+        document.getElementById("result2").innerHTML="连在一起的输出结果"+stra.lastIndexOf(strb);
+    }
+    //使用slice获取选中输入框内容的部分内容，参数为num-a及num-b
+    function slic() {
+        var stra=document.getElementById("str-a").value;
+        var strb=document.getElementById("str-b").value;
+        var numa=document.getElementById("num-a2").value;
+        var numb=document.getElementById("num-b2").value;
+        var lab1=document.getElementById("radio-a2");
+        var lab2=document.getElementById("radio-b2");
+        if(lab1.checked==true){
+            document.getElementById("result2").innerHTML=stra.slice(numa,numb);
+        }else if(lab2.checked==true){
+            document.getElementById("result2").innerHTML=strb.slice(numa,numb);
+        }
+    }
+    //当前选中输入框的行数//////////有问题
+    function spil() {
+        var stra=document.getElementById("str-a").value;
+        var strb=document.getElementById("str-b").value;
+        var lab1=document.getElementById("radio-a2");
+        var lab2=document.getElementById("radio-b2");
+        if(lab1.checked==true){
+            document.getElementById("result2").innerHTML=stra.split(/\n/).length;
+        }else if(lab2.checked==true){
+            document.getElementById("result2").innerHTML=strb.split(/\r?\n|\r/).length;
+        }
+    }
+    //用substr获取选中输入框内容的子字符串，参数为num-a及num-b
+    function subst() {
+        var stra=document.getElementById("str-a").value;
+        var strb=document.getElementById("str-b").value;
+        var numa=document.getElementById("num-a2").value;
+        var numb=document.getElementById("num-b2").value;
+        var lab1=document.getElementById("radio-a2");
+        var lab2=document.getElementById("radio-b2");
+        if(lab1.checked==true){
+            document.getElementById("result2").innerHTML=stra.substr(numa,numb);
+        }else if(lab2.checked==true){
+            document.getElementById("result2").innerHTML=strb.substr(numa,numb);
+        }
+    }
+    //把所选输入框中的内容全部转为大写
+    function upper() {
+        var stra=document.getElementById("str-a").value;
+        var strb=document.getElementById("str-b").value;
+        var lab1=document.getElementById("radio-a2");
+        var lab2=document.getElementById("radio-b2");
+        if(lab1.checked==true){
+            document.getElementById("result2").innerHTML=stra.toLocaleUpperCase();
+        }else if(lab2.checked==true){
+            document.getElementById("result2").innerHTML=strb.toLocaleUpperCase();
+        }
+    }
+    //把所选输入框中的内容全部转为小写
+    function lower() {
+        var stra=document.getElementById("str-a").value;
+        var strb=document.getElementById("str-b").value;
+        var lab1=document.getElementById("radio-a2");
+        var lab2=document.getElementById("radio-b2");
+        if(lab1.checked==true){
+            document.getElementById("result2").innerHTML=stra.toLocaleLowerCase();
+        }else if(lab2.checked==true){
+            document.getElementById("result2").innerHTML=strb.toLocaleLowerCase();
+        }
+    }
+    // 把所选输入框中内容的半角空格全部去除
+    function replacebk() {
+        var stra=document.getElementById("str-a").value;
+        var strb=document.getElementById("str-b").value;
+        var lab1=document.getElementById("radio-a2");
+        var lab2=document.getElementById("radio-b2");
+        if(lab1.checked==true){
+            document.getElementById("result2").innerHTML=stra.replace(/\s/g,"");
+        }else if(lab2.checked==true){
+            document.getElementById("result2").innerHTML=strb.replace(/\s/g,"");
+        }
+    }
+    //把所选输入框中内容的a全部替换成另外一个输入框中的内容//////////有问题
+    function replacecon() {
+        var stra=document.getElementById("str-a").value;
+        var strb=document.getElementById("str-b").value;
+        var lab1=document.getElementById("radio-a2");
+        var lab2=document.getElementById("radio-b2");
+        if(lab1.checked==true){
+            document.getElementById("str-b").innerHTML=stra;
+        }else if(lab2.checked==true){
+            document.getElementById("str-a").innerText=strb;
+        }
+    }
+
+    //编码三
+    function diyTrim(str) {
+        var result = "";
+
+        result=str.replace(/(^\s+)|(\s+$)/g,"");
+
+        return result;
+    }
+
+    // 测试用例
+    console.log(diyTrim(' a f b    ')); // ->a f b
+    console.log(diyTrim('    ffdaf    ')); // ->ffdaf
+    console.log(diyTrim('1    ')); // ->1
+    console.log(diyTrim('　　f')); // ->f
+    console.log(diyTrim('  　  a f b 　　 ')); // ->a f b
+    console.log(diyTrim(' ')); // ->
+    console.log(diyTrim('　')); // ->
+    console.log(diyTrim('')); // ->
+
+    /*
+    去掉字符串str中，连续重复的地方
+    */
+    function removeRepetition(str) {
+        var result =str;
+        var arr=str.match(/(\w)\1+/g);
+        if (str==null) {
+            return "";
+        }
+        else if(str.match(/(\w)\1+/g)==null){
+            return str;
+        }
+        //(\w)\1表示重复第一个匹配块(\w)即等价于如果(\w)匹配到a，则表达式为aa
+        for (var i=0;i<arr.length;i++){
+
+           var arr2=arr[i].substring(0,1);
+            result=result.replace(arr[i],arr2);
+        }
+        return result;
+    }
+
+    // 测试用例
+    console.log(removeRepetition("aaa")); // ->a
+    console.log(removeRepetition("abbba")); // ->aba
+    console.log(removeRepetition("aabbaabb")); // ->abab
+    console.log(removeRepetition("")); // ->
+    console.log(removeRepetition("abc")); // ->abc
+
+    //编码四
+    var tree = {
+        "id": 0,
+        "name": "root",
+        "left": {
+            "id": 1,
+            "name": "Simon",
+            "left": {
+                "id": 3,
+                "name": "Carl",
+                "left": {
+                    "id": 7,
+                    "name": "Lee",
+                    "left": {
+                        "id": 11,
+                        "name": "Fate"
+                    }
+                },
+                "right": {
+                    "id": 8,
+                    "name": "Annie",
+                    "left": {
+                        "id": 12,
+                        "name": "Saber"
+                    }
+                }
+            },
+            "right": {
+                "id": 4,
+                "name": "Tony",
+                "left": {
+                    "id": 9,
+                    "name": "Candy"
+                }
+            }
+        },
+        "right": {
+            "id": 2,
+            "name": "right",
+            "left": {
+                "id": 5,
+                "name": "Carl",
+            },
+            "right": {
+                "id": 6,
+                "name": "Carl",
+                "right": {
+                    "id": 10,
+                    "name": "Kai"
+                }
+            }
+        }
+    }
+    // 假设id和name均不会重复，根据输入name找到对应的id
+    function findIdByName(name) {
+        function searchnode(node) {
+            if (node != null) {
+                if (node.name == name) {
+                    console.log("id为" + node.id)
+                }
+                searchnode(node.left);
+                searchnode(node.right);
+            }
+        }
+        searchnode(tree);
+    }
+    var btn1=document.getElementById("btn1");
+    btn1.onclick = function(){
+        var name = document.querySelector("#name1").value;
+        findIdByName(name);
+    };
+    // 假设id和name均不会重复，根据输入id找到对应的name
+    function findNameById(id) {
+        function getListWithDLR(node) {
+            if (node != null) {
+                if (node.id == id) {
+                    console.log("name为" + node.name)
+                }
+                getListWithDLR(node.left);
+                getListWithDLR(node.right);
+            }
+        }
+        getListWithDLR(tree);
+    }
+    var btn2=document.getElementById("btn2");
+    btn2.onclick = function(){
+        var id = document.querySelector("#id").value;
+        findNameById(id);
+    };
+
+    // 把这个对象中所有的名字以“前序遍历”的方式全部输出到console中
+    function getListWithDLR(node) {
+        if (node != null) {
+            console.log(node.name);
+            getListWithDLR(node.left);
+            getListWithDLR(node.right);
+        }
+    }
+
+    // 把这个对象中所有的名字以“中序遍历”的方式全部输出到console中
+    function getListWithLDR(node) {
+        if (node != null) {
+            getListWithLDR(node.left);
+            console.log(node.name);
+            getListWithLDR(node.right);
+        }
+    }
+
+    // 把这个对象中所有的名字以“后序遍历”的方式全部输出到console中
+    function getListWithLRD(node) {
+        if (node != null) {
+            getListWithLRD(node.left);
+            console.log(node.name);
+            getListWithLRD(node.right);
+        }
+    }
+
+    //编码五
+    var queue = ["apple", "pear"];
+    queue.join("<-");
+    var queueinput=document.getElementById("queue-input").value;
+    function queuein() {
+        queue.unshift(queueinput);
+        document.getElementById("queue-cont").innerHTML="入队后目前队列"+queue.join("<-");
+    }
+    function queueout() {
+        queue.shift();
+        document.getElementById("queue-cont").innerHTML="出队后目前队列"+queue.join("<-");
+    }
+    function queuefirst() {
+        // var num=queue.length;
+        document.getElementById("queue-cont").innerHTML="队头"+queue[0];
+    }
+    function queuenull() {
+        if (queue .length==0)
+        {
+            document.getElementById("queue-cont").innerHTML="队列空";
+        }else{
+            document.getElementById("queue-cont").innerHTML="队列非空";
+        }
+    }
+
+    //编码六
+    var stack = ["apple", "pear"];
+    stack.join("-< ");
+    var stackinput=document.getElementById("stack-input").value;
+    function stackin() {
+        stack.push(stackinput);
+        document.getElementById("stack-cont").innerHTML="进栈后目前队列"+stack.join("-< ");
+    }
+    function stackout() {
+        stack.pop();
+        document.getElementById("stack-cont").innerHTML="出栈后目前队列"+stack.join("-< ");
+    }
+    function stackfirst() {
+        // var num=stack.length;
+        document.getElementById("stack-cont").innerHTML="栈头"+stack[0];
+    }
+    function stacknull() {
+        if (stack .length==0)
+        {
+            document.getElementById("stack-cont").innerHTML="栈列空";
+        }else{
+            document.getElementById("stack-cont").innerHTML="栈非空";
+        }
+    }
+
+    //编码七
+    var arr = [43, 54, 4, -4, 84, 100, 58, 27, 140];
+    function sortnum(arr) {
+        for (var i=0;i<arr.length;i++){
+            for(var j=0;j<arr.length-1-i;j++){
+                if(arr[j]>arr[j+1]){
+                    var temp=arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=temp;
+                }
+            }
+        }
+        console.log(arr);
+    }
+
+    //编码八
+    var arr2 = ['apple', 'dog', 'cat', 'car', 'zoo', 'orange', 'airplane'];
+    function sortvalue(arr) {
+        arr=arr.sort();
+        console.log(arr);
+        arr2=arr.reverse();
+        console.log(arr2);
+    }
+
+    //编码⑨ 二维数组排序
+    var arr3= [[10, 14], [16, 60], [7, 44], [26, 35], [22, 63]];
+    function ascend(x,y) {
+        return y[1]- x[1];//按数组的第二个值降序排序
+    }
+
+    //编码十
+    var arr4= [
+        {
+            id: 1,
+            name: 'candy',
+            value: 40
+        }, {
+            id: 2,
+            name: 'Simon',
+            value: 50
+        }, {
+            id: 3,
+            name: 'Tony',
+            value: 45
+        }, {
+            id: 4,
+            name: 'Annie',
+            value: 60
+        }
+    ];
+    function jsondescend(x,y) {
+        return x.value-y.value;
+    }
+    //编码十一，好累啊终于快写完了想哭呜呜呜呜
+    var scoreObject = {
+        "Tony": {
+            "Math": 95,
+            "English": 79,
+            "Music": 68
+        },
+        "Simon": {
+            "Math": 100,
+            "English": 95,
+            "Music": 98
+        },
+        "Annie": {
+            "Math": 54,
+            "English": 65,
+            "Music": 88
+        }
+    };
+    // function json_array(data){
+    //     // for(var x in data){
+    //     //     console.log(data[x].Math);
+    //     //     var arr=new Array(i,j);
+    //     //     for (var i=0;i<3;i++) {
+    //     //        arr[i]=new Array();
+    //     //
+    //     //        for (var j=0;j<4;j++) {
+    //     //            arr[i][j]=;
+    //     //        }
+    //     //     }
+    //     // } console.log(arr);
+    //     console.log(JSON.parse(data));
+    //
+    // }
+
+</script>
+</body>
+</html>
