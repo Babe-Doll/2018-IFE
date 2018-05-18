@@ -662,21 +662,35 @@
             "Music": 88
         }
     };
-    // function json_array(data){
-    //     // for(var x in data){
-    //     //     console.log(data[x].Math);
-    //     //     var arr=new Array(i,j);
-    //     //     for (var i=0;i<3;i++) {
-    //     //        arr[i]=new Array();
-    //     //
-    //     //        for (var j=0;j<4;j++) {
-    //     //            arr[i][j]=;
-    //     //        }
-    //     //     }
-    //     // } console.log(arr);
-    //     console.log(JSON.parse(data));
-    //
-    // }
+        function json_array(data){
+        var arr=[];
+        for(var x in data){
+            var arr2=[];
+            arr2.unshift(x);
+
+            for(var x2 in data[x])
+            {
+                arr2.unshift(data[x][x2]);
+
+            }
+            arr2.reverse();
+        arr.unshift(arr2);
+
+        } arr.reverse();
+        console.log(arr);
+    }
+
+    var menuArr = [
+        [1, "Area1", -1],
+        [2, "Area2", -1],
+        [3, "Area1-1", 1],
+        [4, "Area1-2", 1],
+        [5, "Area2-1", 2],
+        [6, "Area2-2", 2],
+        [7, "Area1-2-3", 4],
+        [8, "Area2-2-1", 6],
+    ];
+
 
 </script>
 </body>
