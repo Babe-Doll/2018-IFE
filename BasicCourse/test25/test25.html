@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>test25 date</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body onload="backtime();">
+	<p id="txt"></p>
+	<p id="txt2"></p>
+	<select id="year-select">
+	</select>
+
+	<select id="month-select" onchange="change1()">
+	</select>
+
+	<select id="day-select" >
+	</select>
+
+	<select id="hour-select">
+	</select>
+
+	<select id="minute-select">
+	</select>
+
+	<select id="second-select">
+	</select>
+	<p id="result-wrapper"></p>
+	<script type="text/javascript">
+//最近搞答辩太累了，先实现功能，忙完这段时间就会把所有作业加注释+大改。
+
+function backtime(){
+	var time=new Date();
+	var year=time.getFullYear();
+	var month=time.getMonth();
+	var date=time.getDate();
+	var hour=time.getHours();
+	var min=time.getMinutes();
+	var sec=time.getSeconds();
+	month=checktime(month);
+	date=checktime(date);
+	hour=checktime(hour);
+	min=checktime(min);
+	sec=checktime(sec);
+	backtxt(year,month,date,hour,min,sec);
+	backtxten(year,month,date,hour,min,sec);
+	t=setTimeout('backtime()',500);
+} 
+function backtxt(y,m,d,h,min,s){
+	var time=new Date();
+	document.getElementById("txt").innerHTML="今天是"+y+"年"+m+"月"+d+"日"+backweek(time.getDay())+"  "+h+":"+min+":"+s;
+}
+function backtxten(y,m,d,h,min,s){
+	var time=new Date();
+	var hour=time.getHours();
+	var ap="AM";
+	if(hour>12){
+		hour=hour-12;
+		ap="BM"; }else{
+			ap="AM";
+		}
+	document.getElementById("txt2").innerHTML=y+"-"+m+"-"+d+"  "+backweeken(time.getDay())+"  "+hour+":"+min+":"+s+"  "+ap;
+}
+function backweek(i){
+	var weekday=[];
+	weekday[0]="星期日"
+	weekday[1]="星期一"
+	weekday[2]="星期二"
+	weekday[3]="星期三"
+	weekday[4]="星期四"
+	weekday[5]="星期五"
+	weekday[6]="星期六"
+	return weekday[i];
+}
+function backweeken(i){
+	var weekday=[];
+	weekday[0]="Sunday "
+	weekday[1]="Monday "
+	weekday[2]="Tuesday "
+	weekday[3]="Wednesday "
+	weekday[4]="Thursday "
+	weekday[5]="Friday "
+	weekday[6]="Saturday "
+	return weekday[i];
+}
+function checktime(i){
+	if(i<10){
+		i="0"+i;
+	}
+	return i;
+}
+	var ys= document.getElementById("year-select");
+	for(var i=2000; i<=2032;i++){ 
+	ys.options.add(new Option(i,i)); 
+	}
+	var yss=ys.value;
+	var ms= document.getElementById("month-select");
+	for(var i1=1; i1<=12;i1++){ 
+	ms.options.add(new Option(i1,i1)); }
+	var mss=ms.value;
+	var uniqueday=30;
+	var ds= document.getElementById("day-select");
+	var dss=ds.value;
+	//删除无用选项
+	function removeAll(){
+        var ds= document.getElementById("day-select");
+        ds.options.length=0;
+    }
+    //闰年以及二月
+	function change1(){
+		var ms=document.getElementById("month-select");
+		var ds= document.getElementById("day-select");
+		var mss=ms.value;
+		if(mss==4||mss==6||mss==9||mss==11){
+			var uniqueday=30;
+		}
+		else if(mss==2){
+			if (yss%4==0 && yss%400!=0) {
+				uniqueday=29;
+				removeAll();
+				
+			}else{
+				removeAll();
+				uniqueday=28;
+			}
+		}
+		else{
+			removeAll();
+			uniqueday=31;
+			
+		}
+		for(var i2=1; i2<=uniqueday;i2++){ 
+				ds.options.add(new Option(i2,i2)); }
+		
+	}
+	var hs= document.getElementById("hour-select");
+	for(var i3=0; i3<=23;i3++){ 
+	hs.options.add(new Option(i3,i3)); }
+	var hss=hs.value;
+	var mins= document.getElementById("minute-select");
+	for(var i4=0; i4<=59;i4++){ 
+	mins.options.add(new Option(i4,i4)); }
+	var minss=mins.value;
+	var ss= document.getElementById("second-select");
+	for(var i5=0; i5<=59;i5++){ 
+	ss.options.add(new Option(i5,i5)); }
+	var sss=ss.value;
+	//选择的时间
+	
+
+
+	window.onclick=function val(){
+	var yss= document.getElementById("year-select").value;
+	var mss=document.getElementById("month-select").value;
+	var dss= document.getElementById("day-select").value;
+	var hss= document.getElementById("hour-select").value;
+	var minss= document.getElementById("minute-select").value;
+	var sss= document.getElementById("second-select").value;
+	var time=new Date();
+	var time2=new Date(yss,mss,hss,minss,sss);
+	var time3=time.getTime()-time2.getTime();
+	var result=time3 > 0 ?'已经过去':'还有';
+	var years=Math.floor(time3/(24*3600*1000*365));
+	leave4=time3%(24*3600*1000*365);
+	var months=Math.floor(leave4/(24*3600*1000*30));
+	leave5=time3%(24*3600*1000*30);
+	//计算出相差天数
+	var days=Math.floor(leave5/(24*3600*1000));
+	//计算出小时数
+	var leave1=time3%(24*3600*1000);
+	//计算天数后剩余的毫秒数
+	var hours=Math.floor(leave1/(3600*1000));
+	//计算相差分钟数
+	var leave2=leave1%(3600*1000);
+	//计算小时数后剩余的毫秒数
+	var minutes=Math.floor(leave2/(60*1000));
+	//计算相差秒数
+	var leave3=leave2%(60*1000);
+	//计算分钟数后剩余的毫秒数
+	var seconds=Math.round(leave3/1000);
+	document.getElementById("result-wrapper").innerHTML="现在距离 "+yss+"年"+mss+"月"+dss+"天 "+hss+"小时 "+minss+" 分钟"+sss+" 秒"+result+Math.abs(years)+"年"+Math.abs(months)+"月"+Math.abs(days)+"天 "+Math.abs(hours)+"小时 "+Math.abs(minutes)+" 分钟"+Math.abs(seconds)+" 秒";
+	}
+	
+
+	
+</script>
+</body>
+</html>
