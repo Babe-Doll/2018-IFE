@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>es6+es5类</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+<script>
+	// class Restaurant{
+	// 	constructor(money,sitnum,peolist){
+	// 		this.money=money;
+	// 		this.sitnum=sitnum;
+	// 		this.peolist=peolist;
+	// 		this.peolist=[];
+	// 	}
+	// 	hire(peoname){
+	// 		this.peolist.push(peoname);
+	// 		return this.peolist;
+	// 	}
+	// 	fire(peoname){
+	// 		var peolist=this.peolist;
+	// 		for(var i in peolist){
+	// 			if (peoname==peolist[i]){
+	// 				peolist=peolist.splice(i,1);
+	// 			}
+	// 		}
+	// 		return peolist;
+	// 	}
+	// }
+	//es5
+	function Restaurant(money,sitnum,peolist){
+		this.money=money;
+		this.sitnum=sitnum;
+		this.peolist=peolist;
+		this.peolist=[];
+	}
+	Restaurant.prototype.hire=function(peoname){
+		this.peolist.push(peoname);
+		return this.peolist;
+	}
+	Restaurant.prototype.fire=function(peoname){
+		var peolist=this.peolist;
+		for(var i in peolist){
+			if (peoname==peolist[i]){
+				peolist=peolist.splice(i,1);
+			}
+		}
+		return peolist;
+	}
+	let restaurant=new Restaurant(10,50,"");
+	restaurant.hire("tony");
+	restaurant.hire("coco");
+	restaurant.hire("andy");
+	console.log(restaurant);
+	restaurant.fire("coco");
+	console.log(restaurant);
+
+	// class Clerk{
+	// 	constructor(id,name,wage){
+	// 		this.id=id;
+	// 		this.name=name;
+	// 		this.wage=wage;
+	// 	}
+	// 	finishwork(workcon){
+	// 		var a=workcon;
+	// 		return a+"是"+this.name+"的工作内容";
+	// 	}
+	// }
+	//es5
+	function Clerk(id,name,wage){
+		this.id=id;
+		this.name=name;
+		this.wage=wage;
+	}
+	Clerk.prototype.finishwork=function(workcon){
+		var a=workcon;
+		return a+"是"+this.name+"的工作内容";
+	}
+	let clerk=new Clerk(001,"tony",1000);
+	console.log(clerk.finishwork("上菜"));
+
+	// class Waiter extends Clerk{
+	// 	constructor(name){
+	// 		super();
+	// 		this.name=name;
+	// 	}
+	// 	finishwork(work){
+	// 		if(Array.isArray(work)==true){
+	// 			return this.name+"服务员受理"+"客人点菜："+work;
+	// 		}else{
+	// 			return this.name+"上菜咯，"+work;
+	// 		}
+			
+	// 	}
+	// }
+	//es5
+	function Waiter(name){
+		this.name=name;
+	}
+	Waiter.prototype=new Clerk(name);
+	Waiter.prototype.finishwork=function(workcon){
+		if(Array.isArray(workcon)==true){
+			return this.name+"服务员受理"+"客人点菜："+workcon;
+		}else{
+			return this.name+"上菜咯，"+workcon;
+		}
+	}
+	let waiter =new Waiter("coco");
+	let work=["麻辣小龙虾","红烧小龙虾","十三香小龙虾"]
+	let work2="炭烤脆焦猪蹄来咯";
+	console.log(waiter.finishwork(work));
+	console.log(waiter.finishwork(work2));
+
+	// class Cooker extends Clerk{
+	// 	constructor(name){
+	// 		super(name);
+	// 		this.name=name;
+	// 	}
+	// 	cook(){
+	// 		return "厨师"+this.name+"烹饪了一道小龙虾";
+	// 	}
+	// }
+
+	function Cooker(name){
+		this.name=name;
+	}
+	Cooker.prototype=new Clerk(name);
+	Cooker.prototype.cook=function(){
+		return "厨师"+this.name+"烹饪了一道小龙虾";
+	}
+	let cooker =new Cooker("andy");
+	console.log(cooker.cook());
+
+	// class Client{
+	// 	eat(){
+	// 		return "吃";
+	// 	}
+	// }
+	//es5
+	function Client(){
+
+	}
+	Client.prototype.eat=function(){
+		return "吃";
+	}
+	// class Food{
+	// 	constructor(name,cost,price){
+	// 		this.name=name;
+	// 		this.cost=cost;
+	// 		this.price=price;
+	// 	}
+	// }
+	function Food(name,cost,price){
+		this.name=name;
+		this.cost=cost;
+		this.price=price;
+	}
+
+	var food=new Food("麻辣小龙虾",50,100);
+	console.log(food);
+</script>   
+</body>
+	
+</html>
