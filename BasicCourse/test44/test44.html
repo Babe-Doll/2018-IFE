@@ -133,14 +133,15 @@
 	// }
 	// var food=new Food("麻辣小龙虾",50,100);
 	// console.log(food);
-	
+	let coco=Waiter.getinstance("coco");
+	let andy=Cooker.getinstance("andy");
 	for(var a in peo){
 		var peolist=[];
 		peolist[a]=new Client(peo[a]);
 		peolist[a].comein();
-		var coco=Waiter.getinstance("coco");
+		
 		coco.dowork(menu);
-		let andy=Cooker.getinstance("andy");
+		
 		andy.cook(menu);
 		peolist[a].leave();	
 	}
