@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>test44</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+<script type="text/javascript">
+    class Restaurant{
+		constructor(money,sitnum,peolist){
+			this.money=money;
+			this.sitnum=sitnum;
+			this.peolist=peolist;
+			this.peolist=[];
+		}
+		hire(peoname){
+			this.peolist.push(peoname);
+			return this.peolist;
+		}
+		fire(peoname){
+			var peolist=this.peolist;
+			for(var i in peolist){
+				if (peoname==peolist[i]){
+					peolist=peolist.splice(i,1);
+				}
+			}
+			return peolist;
+		}
+	}
+	
+	let restaurant=new Restaurant(10,50,"");
+	restaurant.hire("tony");
+	restaurant.hire("coco");
+	console.log(restaurant);
+	let menu=["麻辣小龙虾","蒜蓉小龙虾","十三香小龙虾"]
+	let peo=["王小明","李小红","郭小美"];
+	class Client{
+		constructor(name){
+			this.name=name;
+			
+		}
+		comein(){
+			console.log("欢迎客人"+"——"+this.name+"——"+"进店");	
+		}
+		eat(food){
+			console.log("客人"+this.name+"开始吃"+food);
+
+		}
+		leave(){
+			console.log("客人"+"——"+this.name+"——"+"吃完饭走了~");	
+		}
+	}
+
+	class Clerk{
+		constructor(id,name,wage){
+			this.id=id;
+			this.name=name;
+			this.wage=wage;
+		}
+		finishwork(workcon){
+			var a=workcon;
+			return a+"是"+this.name+"的工作内容";
+		}
+	}
+
+	class Waiter extends Clerk{
+		constructor(name){
+			super(name);
+			this.name=name;
+			this.instance=null;
+			this.job="服务员";
+		}
+		dowork(work){
+			if(Array.isArray(work)==true){
+				console.log(this.name+"服务员受理"+"客人点菜："+work);
+			}else{
+				console.log(this.name+"上菜咯，"+work);
+			}
+			
+		}
+		static getinstance(name){
+			if (!this.instance) {
+				this.instance =new Waiter(name);
+			}
+			console.log(this.instance);
+			return this.instance;
+		}
+	}
+	
+
+	
+
+	// let waiter =new Waiter("coco");
+	// let waiter2 =new Waiter("coco2");
+		// console.log(waiter.finishwork(work));
+	// console.log(waiter.finishwork(work2));
+	// console.log(waiter2.finishwork(work2));
+
+	class Cooker extends Clerk{
+		constructor(name){
+			super(name);
+			this.name=name;
+			this.job="新东方厨师";
+		}
+		cook(work){
+			if(Array.isArray(work)==true){
+				for(var i in work){
+					console.log("新东方厨师"+this.name+"烹饪了"+work[i]);
+					// coco.dowork(work[i]);
+					peolist[a].eat(work[i]);
+				}
+			}
+		}
+		static getinstance(name){
+			if (!this.instance) {
+				this.instance =new Cooker(name);
+			}
+			console.log(this.instance);
+			return this.instance;		
+		}
+	}
+	
+	// class Food{
+	// 	constructor(name,cost,price){
+	// 		this.name=name;
+	// 		this.cost=cost;
+	// 		this.price=price;
+	// 	}
+	// }
+	// var food=new Food("麻辣小龙虾",50,100);
+	// console.log(food);
+	
+	for(var a in peo){
+		var peolist=[];
+		peolist[a]=new Client(peo[a]);
+		peolist[a].comein();
+		var coco=Waiter.getinstance("coco");
+		coco.dowork(menu);
+		let andy=Cooker.getinstance("andy");
+		andy.cook(menu);
+		peolist[a].leave();	
+	}
+
+
+</script>
+</body>
+</html>
