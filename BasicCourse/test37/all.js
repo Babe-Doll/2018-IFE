@@ -60,7 +60,7 @@ function create(){
             createline(hovertd);
         };
         td[i].onmouseout = function () {
-            // this.removeChild(div);
+            this.removeChild(div);
 
             row = this.parentNode.getElementsByTagName('td');
             // console.log(row);
