@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+    <title>san 01</title>
+    <script src="https://unpkg.com/san@latest"></script>
+</head>
+
+<body>
+	<img src="1.jpg" alt="">不太懂是想要啥,这样就行吗
+    <script>
+        const MyApp = san.defineComponent({
+            template: `
+                <div>
+                    <p>Hello World!</p>
+                </div>
+            `
+        });
+
+        let myApp = new MyApp();
+        myApp.attach(document.body);
+    </script>
+</body>
+
+</html>
