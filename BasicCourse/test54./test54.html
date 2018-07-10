@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>足球54</title>
+<style type="text/css">
+    .player{
+        width:5%;
+        height:8%;
+        position: absolute;
+        z-index: 1000;
+    }
+</style>
+</head>
+<body>
+    <div><canvas class="canvas" id="canvas" width="1280" height="720" style="float: left;border:1px solid #ddd;width: 100%;"></canvas></div>
+<script>
+    var canvas=document.getElementById("canvas");
+    var ctx = canvas.getContext('2d');
+    function createcanvas(){
+        
+        
+        ctx.fillStyle  = "rgb(153,204,60)";
+        ctx.fillRect(0,0,1280,720);
+        ctx.beginPath();
+        ctx.strokeStyle  = "#fff";
+        //总区域
+        ctx.strokeRect(80,50,1120,620);
+        //罚球区
+        ctx.strokeRect(80,160,200,400);
+        ctx.strokeRect(1000,160,200,400);
+        //球门区
+        ctx.strokeRect(80,210,70,300);
+        ctx.strokeRect(1130,210,70,300);
+        //球框
+        ctx.strokeRect(40,270,40,200);
+        ctx.strokeRect(1200,270,40,200);
+        //罚球踢球那个圆
+        ctx.moveTo(280,280);
+        ctx.arc(220,360,100,Math.PI/180*(-53),Math.PI/180*(-307),false);
+        ctx.moveTo(1000,440);
+        ctx.arc(1060,360,100,Math.PI/180*(127),Math.PI/180*(234),false);
+        ctx.moveTo(740,360);
+        //中圈
+        ctx.arc(640,360,100,0,Math.PI*2,false);
+        ctx.moveTo(640,50);
+        ctx.lineTo(640,670);
+        ctx.stroke();
+    }
+    
+    var w = canvas.width;
+    var h =canvas.height;
+
+    //喷射点位置
+    sx=w/2;
+    sy=h/2;
+    //放置玩家的数组
+    var player =[];
+            
+    class Player{
+        constructor(id){
+            this.id=id;
+            this.positionX=Math.round(Math.random()*1000+90);
+            this.positionY=Math.round(Math.random()*610+60);
+            // this.v=Math.round(Math.random()*99);
+            this.v=99;
+
+            this.maxv=Math.round(3 + (this.v - 1)*(9 / 98));
+            this.color="rgb(" + Math.random()*255 + "," + Math.random()*255 + "," + Math.random()*255 + ")";
+            this.v0x=Math.round(10-Math.random()*(20));//初始速度
+            this.v0y=Math.round(10-Math.random()*(20));
+            this.a=0;//加速度
+            this.vtx= 0;//末速度
+            this.vty= 0;
+            this.time=0;//时间
+            this.sx = 0;//位移
+            this.sy = 0;
+            console.log(this.v0x,this.v0y);
+            //vt= v0+at   s=v0*time+1/2a*time^2   vt^2-v0^2 =2as 
+        }
+        createPlayer(){
+            ctx.beginPath();
+            ctx.fillStyle= this.color;
+            ctx.arc( this.positionX,this.positionY,10,0,Math.PI *2,true);
+            ctx.closePath();
+            ctx.fill();
+        }
+        run(){
+            createcanvas();
+            if(this.positionX<80 || w-this.positionX <80){
+                this.v0x *=-1;
+                this.v0y -=1;
+            }
+            if(this.positionY<50 || h- this.positionY <50){
+                this.v0y *=-1;
+                this.v0x -=1;
+            }
+            this.time+=0.05;
+            this.a = 12;
+            this.sx=this.v0x*this.time + (0.5*this.a*(this.time*this.time));
+            this.sy=this.v0y*this.time + (0.5*this.a*(this.time*this.time));
+            this.vtx=this.v0x+this.a*this.time;
+            this.vty=this.v0y+this.a*this.time;
+            this.positionX += this.sx;
+            this.positionY += this.sy;
+            ctx.beginPath();
+            ctx.fillStyle= this.color;
+            ctx.arc( this.positionX,this.positionY,10,0,Math.PI *2,true);
+            ctx.closePath();
+            ctx.fill();
+            console.log(this.vtx,this.vty);
+
+        }
+        runslow(){
+            createcanvas();
+            console.log(this.vtx,this.vty);
+            if(this.positionX<80 || w-this.positionX <80){
+               this.vtx *=-1;
+               this.vty -=1;
+            }
+            if(this.positionY<50 || h- this.positionY <50){
+                this.v0y *=-1;
+              this.vty -=1;
+            }
+            this.time=1;
+            this.a = 12;
+            if(this.time>0){
+                var sx1=this.vtx*this.time - (0.5*this.a*(this.time*this.time));
+                var sy2=this.vty*this.time - (0.5*this.a*(this.time*this.time));
+                this.positionX += this.sx;
+                this.positionY += this.sy;
+                this.time =this.time - 0.05;
+            }
+            
+            ctx.beginPath();
+            ctx.fillStyle= this.color;
+            ctx.arc( this.positionX,this.positionY,10,0,Math.PI *2,true);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+    }
+    createcanvas();
+    var p1 = new Player("p1");
+    var settime=0;
+    var t=setInterval(function(){
+       settime++;
+      if(settime<20){
+        p1.run();
+      }else if(settime>20 &&settime<50){
+        p1.runslow();
+      }else if(settime >50){
+        clearTimeout(t);
+      }
+    }, 50);
+   
+   
+</script>
+</body>
+</html>
